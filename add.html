@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>add to blog</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            /*background-image: url("background.png"); same thing as index*/
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        ::backdrop {
+            background-color: black;
+            opacity: 0.75;
+        }       
+
+    </style>
+</head>
+<body>
+    <h1>add to blog</h1>
+    <form action="add.php" method="POST">
+        <input name="title">
+        <br>
+        <textarea rows="5" cols="60" name="text" placeholder="Enter text"></textarea>
+        <br>
+        <label>enter password:</label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit">
+    </form>
+    <dialog>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="thefile">
+            <br>
+            <input type="password" name="password">
+            <br>
+            <input type="submit" name="submit">
+        </form>
+        <button>close</button>
+    </dialog>
+    <button>image upload</button>
+    <script>
+        const dialog = document.querySelector("dialog");
+        const showButton = document.querySelector("dialog + button");
+        const closeButton = document.querySelector("dialog button");
+
+        // "Show the dialog" button opens the dialog modally
+        showButton.addEventListener("click", () => {
+            dialog.showModal();
+        });
+
+        // "Close" button closes the dialog
+        closeButton.addEventListener("click", () => {
+            dialog.close();
+        });
+    </script>
+</body>
+</html>
