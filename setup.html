@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>setup</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>blog setup</h1>
+    <form action="setup.php" method="POST">
+        <label for="name">name/title of blog</label>
+        <input name="name">
+        <label for="tz">timezone (e.g. UTC)</label>
+        <input name="tz">
+        <br>
+        <label for="password">admin password</label>
+        <input type="password" name="password">
+        <br>
+        <label for="multi">enable multi-account support</label>
+        <input type="checkbox" name="multi">
+        <br>
+        <label for="rss">enable rss feed</label>
+        <input type="checkbox" name="rss">
+        <fieldset>
+            <legend>rss options</legend>
+            <label for="desc">description</label>
+            <input name="desc">
+            <br>
+            <label for="location">where the blog is located (e.g. https://example.com/blog/)</label>
+            <input name="location">
+        </fieldset>
+        <input type="submit">
+    </form>
+</body>
+</html>

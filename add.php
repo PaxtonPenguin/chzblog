@@ -1,10 +1,17 @@
 <?php
+
+//timezone-hyhyh
 date_default_timezone_set('UTC');
-$shapasswd = "please fill in sha256 hashed password :]";
+
+//passwords-peepy
+$passwords = array (
+    //password-peepy
+)
+
 $blog_temp = "<!DOCTYPE html>\n<html>\n<head>\n<title>" . $_POST["title"] . "</title>\n</head>\n<body>\n<a href='../../../index.html'>back</a>\n<hr>\n<h2>" . $_POST["title"] . "</h2>\n" . str_replace("\n", "<br>", $_POST["text"]) . "\n<br>\n<i>posted on " . date("m/d/Y h:i A") . " UTC</i>\n<hr>\n</body>\n</html>";
 $stupid = date("Y") . "/" . date("m") . "/" . date("d");
 
-//if (hash("sha256", $_POST["password"]) == $shapasswd) {
+if (in_array(hash("sha256", $_POST["password"]), $passwords)) {
 
 //make the year's directory and add it to main page
 if (!is_dir(date("Y"))) {
@@ -78,7 +85,7 @@ fclose($ssf);
 
 //redirect
 header("Location: " . $stupid . "/index.html");
-//} else {
-//   echo "wrong password";
-//}
+} else {
+   echo "wrong password";
+}
 ?>
