@@ -1,12 +1,13 @@
 <?php
 
 //timezone-hyhyh
-date_default_timezone_set('UTC');
 
-//passwords-peepy
 $passwords = array (
     //password-peepy
-)
+);
+
+//where-locate
+
 
 $blog_temp = "<!DOCTYPE html>\n<html>\n<head>\n<title>" . $_POST["title"] . "</title>\n</head>\n<body>\n<a href='../../../index.html'>back</a>\n<hr>\n<h2>" . $_POST["title"] . "</h2>\n" . str_replace("\n", "<br>", $_POST["text"]) . "\n<br>\n<i>posted on " . date("m/d/Y h:i A") . " UTC</i>\n<hr>\n</body>\n</html>";
 $stupid = date("Y") . "/" . date("m") . "/" . date("d");
@@ -82,6 +83,33 @@ while (($buffer23 = fgets($ssf)) !== false) {
     }
 }
 fclose($ssf);
+
+if (file_exists("rss.xml")) {
+    $data = file('rss.xml'); // reads an array of lines
+        function replace_a_line($data) {
+            if (stristr($data, 'lastBuildDate')) {
+                return "\t\t<lastBuildDate>" . date("r") . "</lastBuildDate>\n";
+            }
+        return $data;
+    }
+$data = array_map('replace_a_line', $data);
+file_put_contents('rss.xml', $data);
+
+    $sssf = fopen("rss.xml", "r+");
+    $oldstr234 = file_get_contents("rss.xml");
+    $str_to_insert234 = "\t\t<item>\n\t\t\t<title>" . $_POST["title"] ."</title>\n\t\t\t<description>" . substr($_POST["text"], 0, 30) . "...</description>\n\t\t\t<link>" . $bloglocation . "/" . $stupid  . "/index.html</link>\n\t\t\t<pubDate>" . date("r") . "</pubDate>\n\t\t</item>\n";
+    $specificLine234 = "the-comment-ever-because-length";
+
+    while (($buffer234 = fgets($sssf)) !== false) {
+        if (strpos($buffer234, $specificLine234) !== false) {
+            $pos234 = ftell($sssf); 
+            $newstr234 = substr_replace($oldstr234, $str_to_insert234, $pos234, 0);
+            file_put_contents("rss.xml", $newstr234);
+            break;
+        }
+    }
+    fclose($sssf);
+}
 
 //redirect
 header("Location: " . $stupid . "/index.html");
