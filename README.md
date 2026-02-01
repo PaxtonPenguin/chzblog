@@ -20,6 +20,12 @@ add.html - the interface for add.php (and upload.php i guess)
 
 upload.php - the image uploader that means this isn't 1 script
 
+setup.html - the setup interface
+
+setup.php - the setup script
+
+admin.html & admin.php - admin panel that doesn't do anything
+
 ## limitations
 only 1 post per day
 
